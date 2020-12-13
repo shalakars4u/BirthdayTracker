@@ -27,6 +27,7 @@ To use the SAM CLI, you need the following tools.
 * Java11 - [Install the Java 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
 * Maven - [Install Maven](https://maven.apache.org/install.html)
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
+* Git - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 To build and deploy your application for the first time, run the following in your shell:
 
