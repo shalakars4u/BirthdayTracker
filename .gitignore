@@ -1,2 +1,4 @@
 .aws-sam/
 .idea/
+BirthdayTrackerFunction/BirthdayTracker.iml
+BirthdayTrackerFunction/target/
