@@ -1,9 +1,11 @@
-package birthdaytracker;
+package com.birthdaytracker;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import com.birthdaytracker.functions.App;
 import org.junit.Test;
 
 public class AppTest {
