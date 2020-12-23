@@ -71,11 +71,11 @@ The SAM CLI reads the application template to determine the API's routes and the
 
 ```yaml
       Events:
-        HelloWorld:
+        BirthdayTracker:
           Type: Api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /insertDateOfBirth
+            Method: post
 ```
 
 ## Add a resource to your application
