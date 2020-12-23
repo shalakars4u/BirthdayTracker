@@ -1,4 +1,4 @@
-package com.birthdaytracker.functions;
+/*package com.birthdaytracker.functions;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 /**
  * Handler for requests to Lambda function.
  */
-public class App implements RequestHandler<APIGatewayProxyRequestEvent,
+/*class App implements RequestHandler<APIGatewayProxyRequestEvent,
         APIGatewayProxyResponseEvent> {
     /**
      * API Gateway function.
      */
-    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input,
+    /*APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input,
                                                       final Context context) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
@@ -52,3 +52,4 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent,
         }
     }
 }
+*/

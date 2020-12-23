@@ -9,23 +9,48 @@ Description: >
 Globals:
   Function:
     Timeout: 20
-
 Resources:
+  birthdaytracker:
+    Type: "AWS::DynamoDB::Table"
+    Properties:
+      TableName: "birthdayTracker"
+      AttributeDefinitions:
+        - AttributeName: name
+          AttributeType: S
+        - AttributeName: month
+          AttributeType: N
+        - AttributeName: date
+          AttributeType: N
+      KeySchema:
+        - AttributeName: name
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+      - IndexName: "monthAndDateIndexName"
+        KeySchema:
+          - AttributeName: month
+            KeyType: HASH
+          - AttributeName: date
+            KeyType: RANGE
+        Projection:
+          ProjectionType: ALL
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
   BirthdayTrackerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: BirthdayTrackerFunction
-      Handler: birthdaytracker.App::handleRequest
+      Handler: com.birthdaytracker.functions.InsertBirthdayDateLambda::handleRequest
       Runtime: java11
       MemorySize: 512
-      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
-        Variables:
-          PARAM1: VALUE
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref birthdayTracker
       Events:
         BirthdayTracker:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /getDate
+            Path: /createDate
             Method: get
 
 Outputs:
