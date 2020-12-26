@@ -11,15 +11,36 @@ import lombok.RequiredArgsConstructor;
 public class DbModelFactory {
     @NonNull Json json;
 
+    /**
+     * Create.
+     */
     public BirthdayTracker create(APIGatewayProxyRequestEvent event) {
         InsertDateRequest tracker = json.deserialize(InsertDateRequest.class, event.getBody());
         BirthdayTracker birthdayTracker = BirthdayTracker.builder()
                 .name(tracker.getName())
                 .dateOfBirth(tracker.getDateOfBirth())
-                .month(mothod.get(tracker.getDateOfBirth()))
-                .date(othermethod.get(tracker.get))
+                .month(getMonth(tracker.getDateOfBirth()))
+                .date(getDates(tracker.getDateOfBirth()))
                 .build();
 
         return birthdayTracker;
+    }
+
+    /**
+     * getMonth.
+     */
+    public int getMonth(String dateOfBirth) {
+        String[] res = dateOfBirth.split("/");
+        return Integer.parseInt(res[0]);
+
+    }
+
+    /**
+     * getDates.
+     */
+    public int getDates(String dateOfBirth) {
+        String[] res = dateOfBirth.split("/");
+        return Integer.parseInt(res[1]);
+
     }
 }

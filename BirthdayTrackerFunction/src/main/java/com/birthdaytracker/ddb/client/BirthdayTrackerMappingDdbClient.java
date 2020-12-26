@@ -5,11 +5,12 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class BirthdayTrackerMappingDDBClient {
+public class BirthdayTrackerMappingDdbClient {
 
     @NonNull
-    private IDDBClient ddbClient;
-    public void saveNameDateRequestMapping(BirthdayTracker bd){
+    private IddbClient ddbClient;
+
+    public void saveNameDateRequestMapping(BirthdayTracker bd) {
         ddbClient.saveItem(bd);
     }
 }

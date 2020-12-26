@@ -9,23 +9,26 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class DDBClient implements IDDBClient {
+public class DdbClient implements IddbClient {
     @NonNull
     private final DynamoDBMapper dynamoDBMapper;
+
     @Override
-    public void saveItem(Object item) throws IllegalArgumentException{
-        if(item==null){
+    public void saveItem(Object item) throws IllegalArgumentException {
+        if (item == null) {
             throw new IllegalArgumentException("Attempt to save null data");
 
         }
         dynamoDBMapper.save(item);
     }
+
     @Override
-    public void deleteItem(Object item){
+    public void deleteItem(Object item) {
         dynamoDBMapper.delete(item);
     }
-    public <T> T loadItem(String hashKey,Class<T> type){
-        return dynamoDBMapper.load(type,hashKey);
+
+    public <T> T loadItem(String hashKey, Class<T> type) {
+        return dynamoDBMapper.load(type, hashKey);
     }
 
 

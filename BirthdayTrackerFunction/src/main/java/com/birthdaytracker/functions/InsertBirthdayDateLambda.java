@@ -4,7 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDDBClient;
+import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDdbClient;
 import com.birthdaytracker.factory.DbModelFactory;
 import com.birthdaytracker.ddb.model.BirthdayTracker;
 import lombok.NonNull;
@@ -18,7 +18,8 @@ import java.util.Map;
  * Handler for requests to Lambda function.
  */
 
-public class InsertBirthdayDateLambda extends BaseInjectedLambda implements RequestHandler<APIGatewayProxyRequestEvent,
+public class InsertBirthdayDateLambda extends BaseInjectedLambda implements
+        RequestHandler<APIGatewayProxyRequestEvent,
         APIGatewayProxyResponseEvent> {
     /**
      * API Gateway function.
@@ -26,17 +27,17 @@ public class InsertBirthdayDateLambda extends BaseInjectedLambda implements Requ
     @NonNull
     DbModelFactory dbModelFactory;
     @NonNull
-    BirthdayTrackerMappingDDBClient mapper;
+    BirthdayTrackerMappingDdbClient mapper;
 
-    public InsertBirthdayDateLambda(){
+    public InsertBirthdayDateLambda() {
         this(getInjector().getInstance(DbModelFactory.class),
-                getInjector().getInstance(BirthdayTrackerMappingDDBClient.class));
+                getInjector().getInstance(BirthdayTrackerMappingDdbClient.class));
     }
 
     public InsertBirthdayDateLambda(final DbModelFactory dbModelFactory,
-                                    final BirthdayTrackerMappingDDBClient mapper){
-        this.dbModelFactory = Args.notNull(dbModelFactory,"dbModelFactory");
-        this.mapper = Args.notNull(mapper,"mappper");
+                                    final BirthdayTrackerMappingDdbClient mapper) {
+        this.dbModelFactory = Args.notNull(dbModelFactory, "dbModelFactory");
+        this.mapper = Args.notNull(mapper, "mappper");
     }
 
     /**

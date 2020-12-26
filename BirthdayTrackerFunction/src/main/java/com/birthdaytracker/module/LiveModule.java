@@ -3,9 +3,9 @@ package com.birthdaytracker.module;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDDBClient;
-import com.birthdaytracker.ddb.client.DDBClient;
-import com.birthdaytracker.ddb.client.IDDBClient;
+import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDdbClient;
+import com.birthdaytracker.ddb.client.DdbClient;
+import com.birthdaytracker.ddb.client.IddbClient;
 import com.birthdaytracker.factory.DbModelFactory;
 import com.birthdaytracker.utils.ForgivingObjectMapperFactory;
 import com.birthdaytracker.utils.Json;
@@ -23,9 +23,10 @@ public class LiveModule extends AbstractModule {
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 
         DynamoDBMapper mapper = new DynamoDBMapper(client);
-        IDDBClient ddbClient = new DDBClient(mapper);
-        BirthdayTrackerMappingDDBClient birthdayTrackerClient=new BirthdayTrackerMappingDDBClient(ddbClient);
-        bind(BirthdayTrackerMappingDDBClient.class).toInstance(birthdayTrackerClient);
+        IddbClient ddbClient = new DdbClient(mapper);
+        BirthdayTrackerMappingDdbClient birthdayTrackerClient =
+                new BirthdayTrackerMappingDdbClient(ddbClient);
+        bind(BirthdayTrackerMappingDdbClient.class).toInstance(birthdayTrackerClient);
         bind(DbModelFactory.class).toInstance(dbModelFactory);
 
 

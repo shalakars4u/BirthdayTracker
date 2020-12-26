@@ -7,6 +7,7 @@ import lombok.Synchronized;
 
 public class BaseInjectedLambda {
     private static Injector injector;
+
     @Synchronized
     protected static Injector getInjector() {
         if (injector == null) {
