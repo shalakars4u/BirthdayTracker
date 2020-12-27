@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 public class DbModelFactory {
     @NonNull Json json;
 
+    @NonNull ParseFactory parseFactory;
+
     /**
      * Create.
      */
@@ -19,28 +21,10 @@ public class DbModelFactory {
         BirthdayTracker birthdayTracker = BirthdayTracker.builder()
                 .name(tracker.getName())
                 .dateOfBirth(tracker.getDateOfBirth())
-                .month(getMonth(tracker.getDateOfBirth()))
-                .date(getDates(tracker.getDateOfBirth()))
+                .month(parseFactory.create(tracker.getDateOfBirth(), "month"))
+                .date(parseFactory.create(tracker.getDateOfBirth(), "date"))
                 .build();
 
         return birthdayTracker;
-    }
-
-    /**
-     * getMonth.
-     */
-    public int getMonth(String dateOfBirth) {
-        String[] res = dateOfBirth.split("/");
-        return Integer.parseInt(res[0]);
-
-    }
-
-    /**
-     * getDates.
-     */
-    public int getDates(String dateOfBirth) {
-        String[] res = dateOfBirth.split("/");
-        return Integer.parseInt(res[1]);
-
     }
 }
