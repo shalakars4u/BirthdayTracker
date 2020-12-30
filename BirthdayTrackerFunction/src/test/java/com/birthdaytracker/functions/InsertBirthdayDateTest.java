@@ -1,13 +1,10 @@
-package com.birthdaytracker.insertbirthdaydatelambda;
+package com.birthdaytracker.functions;
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDdbClient;
 import com.birthdaytracker.ddb.model.BirthdayTracker;
-import com.birthdaytracker.factory.DbModelFactory;
-import com.birthdaytracker.functions.InsertBirthdayDateLambda;
+import com.birthdaytracker.module.TestModule;
 import com.google.inject.Guice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

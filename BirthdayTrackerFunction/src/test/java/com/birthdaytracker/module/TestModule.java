@@ -1,4 +1,4 @@
-package com.birthdaytracker.insertbirthdaydatelambda;
+package com.birthdaytracker.module;
 
 import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDdbClient;
 import com.birthdaytracker.factory.DbModelFactory;

@@ -1,4 +1,4 @@
-package com.birthdaytracker.insertbirthdaydatelambda;
+package com.birthdaytracker.module;
 
 import com.birthdaytracker.functions.InsertBirthdayDateLambda;
 import com.birthdaytracker.module.LiveModule;
