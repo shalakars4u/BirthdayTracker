@@ -3,9 +3,9 @@
 This project contains source code and supporting files for a serverless application that is deployed with the SAM CLI.
 
 **The application stores names of people with their date of birth in a table called birthdayTracker and then retrieves:**  
-**1. Date of birth of a person and the age  when we give input as name.**
-**2. Displays names of people with birthdays on particular month.**
-**3. Displays names of people with birthdays on particular day.**
+**1. Date of birth of a person and the age  when we give input as name.**  
+**2. Displays names of people with birthdays on particular month.**  
+**3. Displays names of people with birthdays on particular day.**  
 
 **Technologies used:**  
 **Java,Lombok,Google Guice,Junit-Mockito,Maven,API Gateway,AWS Lambda ,DynamoDB,,IntelliJ,Docker and Git.**  
