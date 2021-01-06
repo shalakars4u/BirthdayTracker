@@ -58,8 +58,9 @@ public class InsertBirthdayDateLambda extends BaseInjectedLambda implements
             mapper.saveNameDateRequestMapping(birthdayTracker);
             return response.withBody("SUCCESS").withStatusCode(200);
         } catch (Exception e) {
+            System.out.println("Exception" + e);
             return response
-                    .withBody("{}")
+                    .withBody("{FAILURE}")
                     .withStatusCode(500);
         }
     }

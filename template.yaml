@@ -10,7 +10,7 @@ Globals:
   Function:
     Timeout: 20
 Resources:
-  birthdaytracker:
+  birthdayTracker:
     Type: "AWS::DynamoDB::Table"
     Properties:
       TableName: "birthdayTracker"
@@ -24,6 +24,9 @@ Resources:
       KeySchema:
         - AttributeName: name
           KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
       GlobalSecondaryIndexes:
       - IndexName: "monthAndDateIndexName"
         KeySchema:
@@ -59,7 +62,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   BirthdayTrackerApi:
     Description: "API Gateway endpoint URL for Prod stage for Birthday Tracker function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getDate/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/create/"
   BirthdayTrackerFunction:
     Description: "Birthday Tracker Lambda Function ARN"
     Value: !GetAtt BirthdayTrackerFunction.Arn

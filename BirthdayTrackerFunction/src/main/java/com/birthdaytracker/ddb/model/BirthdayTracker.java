@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@DynamoDBTable(tableName = "birthdaytracker")
+@DynamoDBTable(tableName = "birthdayTracker")
 public class BirthdayTracker {
     @DynamoDBHashKey(attributeName = "name")
     private String name;
