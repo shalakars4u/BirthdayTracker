@@ -8,7 +8,7 @@ This project contains source code and supporting files for a serverless applicat
 **3. Displays names of people with birthdays on particular day.**  
 
 **Technologies used:**  
-**Java,Lombok,Google Guice,Junit-Mockito,Maven,API Gateway,AWS Lambda ,DynamoDB,,IntelliJ,Docker and Git.**  
+**Java,Lombok,Google Guice,Junit-Mockito,Maven,API Gateway,AWS Lambda ,DynamoDB,IntelliJ,Docker and Git.**  
 
 It includes the following files and folders.
 
