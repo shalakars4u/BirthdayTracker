@@ -9,10 +9,14 @@ import com.birthdaytracker.ddb.client.DdbClient;
 import com.birthdaytracker.ddb.client.IddbClient;
 import com.birthdaytracker.factory.DbModelFactory;
 import com.birthdaytracker.factory.ParseFactory;
+import com.birthdaytracker.factory.ResponseFactory;
 import com.birthdaytracker.utils.ForgivingObjectMapperFactory;
 import com.birthdaytracker.utils.Json;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LiveModule extends AbstractModule {
@@ -23,7 +27,10 @@ public class LiveModule extends AbstractModule {
         ObjectMapper om = new ForgivingObjectMapperFactory().create();
         Json json = new Json(om);
         ParseFactory parseFactory = new ParseFactory();
+        Map<String, String> headers = new HashMap<>();
+
         DbModelFactory dbModelFactory = new DbModelFactory(json, parseFactory);
+        final ResponseFactory response = new ResponseFactory(headers);
         setupAwsClents();
 
         DynamoDBMapper mapper = new DynamoDBMapper(client);
@@ -33,6 +40,7 @@ public class LiveModule extends AbstractModule {
 
         bind(BirthdayTrackerMappingDdbClient.class).toInstance(birthdayTrackerClient);
         bind(DbModelFactory.class).toInstance(dbModelFactory);
+        bind(ResponseFactory.class).toInstance(response);
     }
 
     /**

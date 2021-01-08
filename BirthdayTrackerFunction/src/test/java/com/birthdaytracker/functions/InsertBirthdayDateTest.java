@@ -19,8 +19,6 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class InsertBirthdayDateTest {
 
     @Mock
-    private APIGatewayProxyResponseEvent responseMock;
-    @Mock
     private APIGatewayProxyRequestEvent input;
     @Mock
     private BirthdayTracker birthdayTracker;
@@ -34,7 +32,9 @@ public class InsertBirthdayDateTest {
         initMocks(this);
         di = new TestModule();
         when(di.dbModelFactory.create(input)).thenReturn(birthdayTracker);
-        when(responseMock.getStatusCode()).thenReturn(200);
+        when(di.response.create("SUCCESS", 200)).thenReturn(new APIGatewayProxyResponseEvent().withBody("SUCCESS").withStatusCode(200));
+        when(di.response.create("FAILURE", 500)).thenReturn(new APIGatewayProxyResponseEvent().withStatusCode(500).withBody("FAILURE"));
+
         context = null;
 
         InsertBirthdayDateLambda.setInjector(Guice.createInjector(di));
@@ -44,8 +44,9 @@ public class InsertBirthdayDateTest {
 
     @Test
     public void constructor_AnyArgsNull_ThrowsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new InsertBirthdayDateLambda(null, di.birthdayTrackerClient));
-        assertThrows(IllegalArgumentException.class, () -> new InsertBirthdayDateLambda(di.dbModelFactory, null));
+        assertThrows(IllegalArgumentException.class, () -> new InsertBirthdayDateLambda(null, di.birthdayTrackerClient,null));
+        assertThrows(IllegalArgumentException.class, () -> new InsertBirthdayDateLambda(di.dbModelFactory, null,null));
+        assertThrows(IllegalArgumentException.class, () -> new InsertBirthdayDateLambda(null, null,di.response));
     }
 
     @Test
@@ -54,14 +55,15 @@ public class InsertBirthdayDateTest {
         doThrow(new NullPointerException("Exception")).when(di.dbModelFactory).create(input);
         APIGatewayProxyResponseEvent result =  sut.handleRequest(input,context);
         assertEquals(500, result.getStatusCode());
+        assertEquals("FAILURE", result.getBody());
+
     }
 
     @Test
     public void handleRequest_NoThrow_ReturnGeneratedResponse() throws Exception {
         APIGatewayProxyResponseEvent result = sut.handleRequest(input, context);
         verify(di.birthdayTrackerClient,times(1)).saveNameDateRequestMapping(birthdayTracker);
-        assertEquals(responseMock.getStatusCode(), result.getStatusCode());
+        assertEquals(200, result.getStatusCode());
         assertEquals("SUCCESS", result.getBody().toString());
-
     }
 }
