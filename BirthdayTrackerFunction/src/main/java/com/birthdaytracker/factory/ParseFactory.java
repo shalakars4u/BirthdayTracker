@@ -9,8 +9,10 @@ public class ParseFactory {
         String[] res = dateOfBirth.split("/");
         if (type.equals("month")) {
             return Integer.parseInt(res[0]);
-        } else {
+        } else if (type.equals("date")) {
             return Integer.parseInt(res[1]);
+        } else {
+            return Integer.parseInt(res[2]);
         }
 
     }

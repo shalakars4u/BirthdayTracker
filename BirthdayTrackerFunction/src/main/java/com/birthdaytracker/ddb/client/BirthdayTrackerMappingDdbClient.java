@@ -13,4 +13,8 @@ public class BirthdayTrackerMappingDdbClient {
     public void saveNameDateRequestMapping(BirthdayTracker bd) {
         ddbClient.saveItem(bd);
     }
+
+    public BirthdayTracker getDateOfBirthRequestMapping(String name) {
+        return ddbClient.loadItem(name, BirthdayTracker.class);
+    }
 }

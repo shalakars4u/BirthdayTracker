@@ -28,17 +28,17 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
       GlobalSecondaryIndexes:
-      - IndexName: "monthAndDateIndexName"
-        KeySchema:
-          - AttributeName: month
-            KeyType: HASH
-          - AttributeName: date
-            KeyType: RANGE
-        Projection:
-          ProjectionType: ALL
-        ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
+        - IndexName: "monthAndDateIndexName"
+          KeySchema:
+            - AttributeName: month
+              KeyType: HASH
+            - AttributeName: date
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
   BirthdayTrackerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -56,6 +56,22 @@ Resources:
             Path: /create
             Method: post
 
+  getDateOfBirthFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: BirthdayTrackerFunction
+      Handler: com.birthdaytracker.functions.GetDateOfBirthLambda::handleRequest
+      Runtime: java11
+      MemorySize: 512
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref birthdayTracker
+      Events:
+        BirthdayTracker:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /getDateOfBirth/{name}
+            Method: get
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM

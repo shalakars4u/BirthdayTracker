@@ -8,6 +8,7 @@ import com.birthdaytracker.ddb.client.BirthdayTrackerMappingDdbClient;
 import com.birthdaytracker.ddb.client.DdbClient;
 import com.birthdaytracker.ddb.client.IddbClient;
 import com.birthdaytracker.factory.DbModelFactory;
+import com.birthdaytracker.factory.GetDateOfBirthFactory;
 import com.birthdaytracker.factory.ParseFactory;
 import com.birthdaytracker.factory.ResponseFactory;
 import com.birthdaytracker.utils.ForgivingObjectMapperFactory;
@@ -31,6 +32,7 @@ public class LiveModule extends AbstractModule {
 
         DbModelFactory dbModelFactory = new DbModelFactory(json, parseFactory);
         final ResponseFactory response = new ResponseFactory(headers);
+        final GetDateOfBirthFactory dateFactory = new GetDateOfBirthFactory(parseFactory);
         setupAwsClents();
 
         DynamoDBMapper mapper = new DynamoDBMapper(client);
@@ -41,6 +43,7 @@ public class LiveModule extends AbstractModule {
         bind(BirthdayTrackerMappingDdbClient.class).toInstance(birthdayTrackerClient);
         bind(DbModelFactory.class).toInstance(dbModelFactory);
         bind(ResponseFactory.class).toInstance(response);
+        bind(GetDateOfBirthFactory.class).toInstance(dateFactory);
     }
 
     /**

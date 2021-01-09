@@ -1,5 +1,6 @@
 package com.birthdaytracker.module;
 
+import com.birthdaytracker.functions.GetDateOfBirthLambda;
 import com.birthdaytracker.functions.InsertBirthdayDateLambda;
 import com.birthdaytracker.module.LiveModule;
 import com.google.inject.Guice;
@@ -27,6 +28,13 @@ public class LiveModuleTests {
         InsertBirthdayDateLambda.setInjector(null);
         InsertBirthdayDateLambda insertBirthdayDateLambda = new InsertBirthdayDateLambda();
         assertNotNull(insertBirthdayDateLambda);
+
+    }
+    @Test
+    public void buildGetLambdasWithLiveModule() {
+        GetDateOfBirthLambda.setInjector(null);
+        GetDateOfBirthLambda getDateOfBirthLambda = new GetDateOfBirthLambda();
+        assertNotNull(getDateOfBirthLambda);
 
     }
 }

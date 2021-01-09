@@ -25,6 +25,7 @@ public class ParseFactoryTest {
         when(dateRequest.getDateOfBirth()).thenReturn(TestConstants.dateOfBirth);
         when(parseFactory.create(dateRequest.getDateOfBirth(), "month")).thenReturn(TestConstants.month);
         when(parseFactory.create(dateRequest.getDateOfBirth(), "date")).thenReturn(TestConstants.date);
+        when(parseFactory.create(dateRequest.getDateOfBirth(), "year")).thenReturn(TestConstants.year);
     }
 
 }
