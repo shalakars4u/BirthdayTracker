@@ -4,7 +4,7 @@ This project contains source code and supporting files for a serverless applicat
 
 **The application stores names of people with their date of birth in a table called birthdayTracker and then retrieves:**  
 **1. Date of birth of a person and the age  when we give input as name.**  
-**2. Displays BirthdayTracker object with birthdays on particular month/day.**  
+**2. Displays list of BirthdayTracker object with birthdays on particular month/day.**  
 
 **Technologies used:**  
 **Java,Lombok,Google Guice,Junit-Mockito,Maven,API Gateway,AWS Lambda ,DynamoDB,IntelliJ,Docker and Git.**  
@@ -13,7 +13,7 @@ It includes the following files and folders.
 
 - BirthdayTrackerFunction/src/main/java/com/birthdaytracker/InsertBirthdayDateLambda- Code for the application's Lambda function which is used to insert data to birthdayTracker table.
 - BirthdayTrackerFunction/src/main/java/com/birthdaytracker/GetDateOfBirthLambda - Code for the application's Lambda function which is used to retrieve date of birth and age of a person.
-- BirthdayTrackerFunction/src/main/java/com/birthdaytracker/GetNamesPerMonthLambda - Code for the application's Lambda function which is used to retrieve BirthdayTracker object which has name,dateofbirth,month,date.
+- BirthdayTrackerFunction/src/main/java/com/birthdaytracker/GetNamesPerMonthLambda - Code for the application's Lambda function which is used to retrieve list of BirthdayTracker object which has name,dateofbirth,month,date.
 - BirthdayTrackerFunction/src/test/java/com/birthdaytracker/ - Contains Unit Tests for BirthdayTrackerFunction. 
 - template.yaml - A template that defines the application's AWS resources.
 
@@ -69,7 +69,7 @@ The SAM CLI reads the application template to determine the API's routes and the
             Path: /create
             Method: post
 ```
-Yaml property changes for retrieving date of birth and age from birthdayTracker table are provided below.
+Yaml property changes for retrieving date of birth and age are provided below.
 ```yaml
  Events:
         BirthdayTracker:
@@ -78,7 +78,7 @@ Yaml property changes for retrieving date of birth and age from birthdayTracker 
             Path: /getDateOfBirth/{name}
             Method: get
 ```
-Yaml property changes for retrieving BirthdayTracker object from birthdayTracker table based on month and date are provided below.
+Yaml property changes for retrieving list of BirthdayTracker object based on month/date are provided below.
 ```yaml
 Events:
         BirthdayTracker:
@@ -125,5 +125,3 @@ aws cloudformation delete-stack --stack-name BirthdayStack
 ## Resources
 
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
-
-Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
