@@ -61,4 +61,11 @@ public class DbModelFactoryTests {
         when(dateRequest.getDateOfBirth()).thenThrow(new NullPointerException(TestConstants.EXPECTED_EXCEPTION_MESSAGE));
         assertThrows(NullPointerException.class, () -> sut.create(event));
     }
+
+    @Test
+    public void create_With_MonthDate() {
+        BirthdayTracker result = sut.create(TestConstants.month,TestConstants.date);
+        assertEquals(TestConstants.month, result.getMonth());
+        assertEquals(TestConstants.date, result.getDate());
+    }
 }

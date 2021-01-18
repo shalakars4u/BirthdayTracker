@@ -9,9 +9,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class DbModelFactory {
-    @NonNull Json json;
+    @NonNull private Json json;
 
-    @NonNull ParseFactory parseFactory;
+    @NonNull private ParseFactory parseFactory;
 
     /**
      * Create.

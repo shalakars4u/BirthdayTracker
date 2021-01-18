@@ -22,11 +22,11 @@ public class InsertBirthdayDateLambda extends BaseInjectedLambda implements
      * API Gateway function.
      */
     @NonNull
-    DbModelFactory dbModelFactory;
+    private DbModelFactory dbModelFactory;
     @NonNull
-    BirthdayTrackerMappingDdbClient mapper;
+    private BirthdayTrackerMappingDdbClient mapper;
     @NonNull
-    ResponseFactory response;
+    private ResponseFactory response;
 
     /**
      * InsertBirthdayDateLambda.

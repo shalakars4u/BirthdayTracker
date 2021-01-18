@@ -44,6 +44,7 @@ public class LiveModule extends AbstractModule {
         bind(BirthdayTrackerMappingDdbClient.class).toInstance(birthdayTrackerClient);
         bind(DbModelFactory.class).toInstance(dbModelFactory);
         bind(ResponseFactory.class).toInstance(response);
+        bind(Json.class).toInstance(json);
         bind(GetDateOfBirthFactory.class).toInstance(dateFactory);
 
     }

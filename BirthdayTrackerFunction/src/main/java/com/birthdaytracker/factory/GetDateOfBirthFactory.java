@@ -10,7 +10,7 @@ import java.time.Period;
 
 @RequiredArgsConstructor
 public class GetDateOfBirthFactory {
-    @NonNull ParseFactory parseFactory;
+    @NonNull private ParseFactory parseFactory;
 
     /**
      * retrieveDetails.

@@ -9,7 +9,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ResponseFactory {
 
-    @NonNull Map<String, String> headers;
+    @NonNull private Map<String, String> headers;
 
     /**
      * Create.

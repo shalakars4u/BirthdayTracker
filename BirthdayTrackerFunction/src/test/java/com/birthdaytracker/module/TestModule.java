@@ -5,6 +5,7 @@ import com.birthdaytracker.factory.DbModelFactory;
 import com.birthdaytracker.factory.GetDateOfBirthFactory;
 import com.birthdaytracker.factory.ResponseFactory;
 import com.birthdaytracker.model.GetDateOfBirthResult;
+import com.birthdaytracker.utils.Json;
 import com.google.inject.AbstractModule;
 import org.mockito.Mock;
 
@@ -15,6 +16,8 @@ public class TestModule extends AbstractModule {
     public BirthdayTrackerMappingDdbClient birthdayTrackerClient;
     @Mock
     public DbModelFactory dbModelFactory;
+    @Mock
+    public Json json;
     @Mock
     public ResponseFactory response;
     @Mock
@@ -33,5 +36,6 @@ public class TestModule extends AbstractModule {
         bind(DbModelFactory.class).toInstance(dbModelFactory);
         bind(ResponseFactory.class).toInstance(response);
         bind(GetDateOfBirthFactory.class).toInstance(dateFactory);
+        bind(Json.class).toInstance(json);
     }
 }

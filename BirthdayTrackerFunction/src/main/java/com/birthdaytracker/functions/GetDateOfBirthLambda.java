@@ -24,11 +24,11 @@ public class GetDateOfBirthLambda extends BaseInjectedLambda implements
         RequestHandler<APIGatewayProxyRequestEvent,
                 APIGatewayProxyResponseEvent> {
     @NonNull
-    BirthdayTrackerMappingDdbClient mapper;
+    private BirthdayTrackerMappingDdbClient mapper;
     @NonNull
-    ResponseFactory response;
+    private ResponseFactory response;
     @NonNull
-    GetDateOfBirthFactory dateFactory;
+    private GetDateOfBirthFactory dateFactory;
 
     /**
      * GetDateOfBirthLambda.
