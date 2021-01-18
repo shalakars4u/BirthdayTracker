@@ -27,4 +27,15 @@ public class DbModelFactory {
 
         return birthdayTracker;
     }
+
+    /**
+     * Create.
+     */
+    public BirthdayTracker create(int month, int date) {
+        BirthdayTracker birthdayTracker = BirthdayTracker.builder()
+                .month(month)
+                .date(date)
+                .build();
+        return birthdayTracker;
+    }
 }
