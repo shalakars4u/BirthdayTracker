@@ -7,7 +7,7 @@ This project contains source code and supporting files for a serverless applicat
 **2. Displays list of BirthdayTracker object with birthdays on particular month/day.**  
 
 **Technologies used:**  
-**Java,Lombok,Google Guice,Junit-Mockito,Maven,API Gateway,AWS Lambda ,DynamoDB,IntelliJ,Docker and Git.**  
+**Java, Lombok, Google Guice, Junit-Mockito, Maven, API Gateway, AWS Lambda , DynamoDB, IntelliJ, Docker and Git.**  
 
 It includes the following files and folders.
 
